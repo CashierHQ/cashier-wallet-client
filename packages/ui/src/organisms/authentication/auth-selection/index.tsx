@@ -1,16 +1,13 @@
 import clsx from "clsx"
 import { motion } from "framer-motion"
 import { A } from "packages/ui/src/atoms/custom-link"
-import { Separator } from "packages/ui/src/atoms/separator"
 import { useEffect, useMemo, useState } from "react"
-import { useForm } from "react-hook-form"
 
 import {
   BlurredLoader,
   Button,
   IconCmpArrow,
   IconCmpPasskey,
-  Input,
 } from "@nfid-frontend/ui"
 import { ExistingWallet } from "@nfid/integration"
 
@@ -41,13 +38,10 @@ export interface AuthSelectionProps {
 }
 
 export const AuthSelection: React.FC<AuthSelectionProps> = ({
-  onSelectEmailAuth,
-  onSelectOtherAuth,
   applicationURL,
   isIdentityKit,
   onLoginWithPasskey,
   getAllWalletsFromThisDevice,
-  googleButton,
   iiButton,
   isLoading,
   type = "sign-in",
@@ -57,10 +51,6 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
     wallets: [],
     isChooseWalletLoading: false,
     isChooseWallet: false,
-  })
-  const { register, handleSubmit, formState } = useForm({
-    defaultValues: { email: "" },
-    mode: "all",
   })
 
   const isPasskeySupported = useMemo(() => {
@@ -87,13 +77,6 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
       })
     }
   }, [isSignIn, getAllWalletsFromThisDevice])
-
-  const errorMessage =
-    formState.errors.email?.type === "required"
-      ? "Please enter your email"
-      : formState.errors.email?.type === "pattern"
-        ? "Email is not valid"
-        : undefined
 
   return (
     <BlurredLoader
@@ -158,39 +141,11 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
             }
           />
           <div className="mt-7">
-            <form
-              onSubmit={handleSubmit((values) =>
-                onSelectEmailAuth(values.email),
-              )}
-              className="space-y-[10px]"
-              noValidate
-            >
-              <Input
-                inputClassName="h-12 rounded-xl"
-                placeholder="Email"
-                type="email"
-                errorText={errorMessage}
-                {...register("email", {
-                  required: true,
-                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                })}
-                autoComplete="off webauthn"
-              />
-              <Button
-                id="email-sign-button"
-                className="h-12 !p-0"
-                type="primary"
-                block
-              >
-                Continue with email
-              </Button>
-            </form>
-            <Separator className="my-[10px]" />
             <div className={`mb-[${isSignIn ? "30px" : "50px"}]`}>
               {isPasskeySupported && (
                 <Button
                   id="passkey-sign-button"
-                  className="h-12 !p-0 group mt-[10px] active:!text-black dark:active:!text-white mb-2"
+                  className="h-12 !p-0 group active:!text-black dark:active:!text-white mb-2"
                   type="stroke"
                   icon={<IconCmpPasskey />}
                   block
@@ -199,19 +154,7 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
                   Continue with a Passkey
                 </Button>
               )}
-              {googleButton}
               {iiButton && <div className="mt-2">{iiButton}</div>}
-              {isSignIn && (
-                <Button
-                  id="other-sign-button"
-                  className="h-12 !p-0 mt-2"
-                  type="ghost"
-                  block
-                  onClick={onSelectOtherAuth}
-                >
-                  Other sign in options
-                </Button>
-              )}
             </div>
           </div>
           <div className="flex justify-center mt-auto">
