@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import React from "react"
 
-import { IconCmpNFIDWalletLogoWhite, IconCmpShare } from "@nfid-frontend/ui"
+import { CashierLogo, IconCmpShare } from "@nfid-frontend/ui"
 
 import LeftBgApproval from "../assets/left-bg-approval.png"
 import LeftBg from "../assets/left-bg.png"
@@ -37,17 +37,21 @@ export const WalletConnectTemplate: React.FC<WalletConnectTemplateProps> = ({
           loading="lazy"
         />
       )}
-      <IconCmpNFIDWalletLogoWhite className="text-white absolute top-[15px] left-[30px]" />
+      <CashierLogo
+        text="Cashier Wallet"
+        variant="light"
+        className="absolute top-[15px] left-[30px]"
+      />
       <div className="xl:max-w-[32rem] max-w-[90%] mx-auto lg:mx-0 relative z-10">
         <p className="gradient-text text-[34px] lg:text-[2.9rem] xl:text-[3.2rem] font-bold leading-[120%]">
           {isApproveRequestInProgress
             ? "Transaction request"
-            : "The easiest to use, hardest to lose, and only wallet governed by a DAO"}
+            : "Share crypto as easily as texting."}
         </p>
         <p className="font-inter text-white text-[20px] lg:text-[1.4rem] mt-[2rem] leading-[140%] max-w-[470px]">
           {isApproveRequestInProgress
             ? "Verify this transaction’s accuracy and make sure you trust the app requesting its approval."
-            : "NFID Wallet is your on-chain wallet running end-to-end on the Internet Computer Protocol."}
+            : "Send or receive tokens & NFTs with just a link or QR code"}
         </p>
       </div>
       <a

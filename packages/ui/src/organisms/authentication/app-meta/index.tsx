@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { A } from "packages/ui/src/atoms/custom-link"
 
-import { H5, LogoMain, LogoLanding } from "@nfid-frontend/ui"
+import { CashierLogo, H5 } from "@nfid-frontend/ui"
 
 import { useDarkTheme } from "frontend/hooks"
 
@@ -24,9 +24,9 @@ export const AuthAppMeta: React.FC<AuthAppMetaProps> = ({
     <>
       <div className="flex flex-col items-center w-full pt-8 pb-[30px] dark:text-white">
         {withLogo && (
-          <img
-            src={isDarkTheme ? LogoLanding : LogoMain}
-            className="h-[43px]"
+          <CashierLogo
+            variant={isDarkTheme ? "light" : "dark"}
+            className="h-[43px] text-[32px]"
           />
         )}
 

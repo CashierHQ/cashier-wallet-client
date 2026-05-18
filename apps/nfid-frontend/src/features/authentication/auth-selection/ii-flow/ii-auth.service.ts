@@ -21,7 +21,8 @@ import {
 import { authStorage } from "packages/integration/src/lib/authentication/storage"
 
 export const identityProvider = "https://id.ai"
-export const derivationOrigin = NFID_WALLET_CLIENT_CANISTER
+export const derivationOrigin =
+  FRONTEND_MODE === "development" ? undefined : NFID_WALLET_CLIENT_CANISTER
 
 export async function signWithIIService(): Promise<IIAuthSession> {
   return new Promise((resolve, reject) => {

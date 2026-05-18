@@ -388,7 +388,7 @@ const config = composePlugins(
       open: false,
       port: 9090,
       headers: {
-        "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
+        "Cross-Origin-Opener-Policy": "unsafe-none",
       },
       proxy: [
         {

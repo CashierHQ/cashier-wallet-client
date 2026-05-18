@@ -2,7 +2,7 @@ import clsx from "clsx"
 import { TickerAmount } from "packages/ui/src/molecules/ticker-amount"
 import { PropsWithChildren, useState } from "react"
 
-import { Address, Button, LogoMain } from "@nfid-frontend/ui"
+import { Address, Button, CashierLogo } from "@nfid-frontend/ui"
 import { Spinner } from "packages/ui/src/atoms/spinner"
 
 export interface WalletConnectBalanceSection {
@@ -50,7 +50,7 @@ export const WalletConnectPromptTemplate = ({
     <div className={clsx("flex flex-col flex-1 h-full", className)}>
       <div className="flex flex-col items-center mt-10 mb-10 text-sm text-center">
         {withLogo ? (
-          <img alt="NFID Wallet" className="w-[182px] mb-4" src={LogoMain} />
+          <CashierLogo className="justify-center w-[182px] mb-4 text-[32px]" />
         ) : null}
         {title && (
           <div className="block w-full text-[20px] lg:text-[28px] font-bold mb-2 lg:mb-4 dark:text-white">

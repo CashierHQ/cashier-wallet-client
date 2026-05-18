@@ -1,11 +1,11 @@
 {
-  "name": "NFID Wallet",
-  "short_name": "NFID Wallet",
+  "name": "Cashier Wallet",
+  "short_name": "Cashier Wallet",
   "theme_color": "#0E0F10",
   "background_color": "#0E0F10",
   "display": "standalone",
   "start_url": "/",
-  "description": "The easiest to use, hardest to lose, and only wallet governed by a DAO.",
+  "description": "Share crypto as easily as texting.",
   "icons": [
     {
       "src": "assets/icons/icon-any-192x192.png",

@@ -1,4 +1,4 @@
-import { NFIDLogo } from "@nfid-frontend/ui"
+import { CashierLogo } from "@nfid-frontend/ui"
 
 import { NFIDAuthentication } from "./auth-modal"
 import { Container } from "./container"
@@ -20,7 +20,7 @@ export function Header({
       />
       <div className="sticky top-0 z-20">
         <Container className="flex items-center justify-center sm:justify-between py-2.5">
-          <NFIDLogo />
+          <CashierLogo text="Cashier Wallet" variant="light" />
           <Socials className="hidden sm:flex" />
         </Container>
       </div>
