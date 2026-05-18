@@ -160,7 +160,7 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
           <div className="flex justify-center mt-auto">
             {isSignIn ? (
               <div className="text-sm dark:text-white">
-                Don’t have an NFID Wallet?{" "}
+                Don’t have an Cashier Wallet?{" "}
                 <A
                   href={window.location.href}
                   onClick={(e) => {
@@ -174,7 +174,7 @@ export const AuthSelection: React.FC<AuthSelectionProps> = ({
               </div>
             ) : (
               <div className="text-sm dark:text-white">
-                Already have an NFID Wallet?{" "}
+                Already have an Cashier Wallet?{" "}
                 <A
                   href={window.location.href}
                   onClick={(e) => {
