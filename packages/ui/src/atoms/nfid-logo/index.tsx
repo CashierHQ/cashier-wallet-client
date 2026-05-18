@@ -14,7 +14,7 @@ interface CashierLogoProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const CashierLogo: FC<CashierLogoProps> = ({
   className,
-  text = "Cashier",
+  text = "Cashier Wallet",
   variant = "dark",
   ...props
 }) => (

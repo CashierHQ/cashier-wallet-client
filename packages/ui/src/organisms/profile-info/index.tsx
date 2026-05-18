@@ -7,8 +7,6 @@ import {
   Skeleton,
   Button,
   CopyAddress,
-  IconCmpConvertWhite,
-  IconCmpStake,
   IconCmpRefresh,
   Tooltip,
 } from "@nfid-frontend/ui"
@@ -30,8 +28,6 @@ export interface IProfileTemplate extends HTMLAttributes<HTMLDivElement> {
   onSendClick: () => void
   onReceiveClick: () => void
   onSwapClick: () => void
-  onConvertClick: () => void
-  onStakeClick: () => void
   refreshPortfolio: () => void
   isRefreshing: boolean
   address?: string
@@ -44,8 +40,6 @@ export const ProfileInfo: FC<IProfileTemplate> = ({
   onSendClick,
   onReceiveClick,
   onSwapClick,
-  onConvertClick,
-  onStakeClick,
   refreshPortfolio,
   isRefreshing,
   address,
@@ -158,44 +152,6 @@ export const ProfileInfo: FC<IProfileTemplate> = ({
               </Button>
               <p className="text-primaryButtonColor md:hidden mb-0 text-xs leading-[20px] mt-[4px] text-center">
                 Swap
-              </p>
-            </div>
-            <div className="flex flex-col">
-              <Button
-                id="profileStakeButton"
-                className="flex-1 !px-0 sm:!px-[15px]"
-                innerClassName="!space-x-1 !h-[40px] !md:h-full w-[56px] sm:w-[72px] md:w-auto"
-                icon={
-                  <IconCmpStake className="text-gray-400 !w-[18px] !h-[18px] text-white" />
-                }
-                onClick={onStakeClick}
-                isSmall
-              >
-                <span id={"stakeButton"} className="hidden md:flex">
-                  Stake
-                </span>
-              </Button>
-              <p className="text-primaryButtonColor md:hidden mb-0 text-xs leading-[20px] mt-[4px] text-center">
-                Stake
-              </p>
-            </div>
-            <div className="flex flex-col">
-              <Button
-                id="profileConvertButton"
-                className="flex-1 !px-0 sm:!px-[15px]"
-                innerClassName="!space-x-1 !h-[40px] !md:h-full w-[56px] sm:w-[72px] md:w-auto"
-                icon={
-                  <IconCmpConvertWhite className="!text-gray-400 !w-[18px] !h-[18px] text-white" />
-                }
-                onClick={onConvertClick}
-                isSmall
-              >
-                <span id={"convertButton"} className="hidden md:flex">
-                  Convert
-                </span>
-              </Button>
-              <p className="text-primaryButtonColor md:hidden mb-0 text-xs leading-[20px] mt-[4px] text-center">
-                Convert
               </p>
             </div>
           </div>

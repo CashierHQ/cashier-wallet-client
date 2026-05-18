@@ -1,6 +1,5 @@
 import { useActor } from "@xstate/react"
 import clsx from "clsx"
-import { BtcBanner } from "packages/ui/src/molecules/btc-banner"
 import ProfileHeader from "packages/ui/src/organisms/header/profile-header"
 import ProfileInfo from "packages/ui/src/organisms/profile-info"
 import {
@@ -21,11 +20,7 @@ import { Principal } from "@dfinity/principal"
 
 import { ArrowButton, Loader, TabsSwitcher, Tooltip } from "@nfid-frontend/ui"
 import { authState } from "@nfid/integration"
-import {
-  BTC_NATIVE_ID,
-  CKBTC_CANISTER_ID,
-  ETH_NATIVE_ID,
-} from "@nfid/integration/token/constants"
+import { BTC_NATIVE_ID, ETH_NATIVE_ID } from "@nfid/integration/token/constants"
 import { useSWR, useSWRWithTimestamp, mutate } from "@nfid/swr"
 
 import { NFIDTheme } from "frontend/App"
@@ -142,11 +137,6 @@ const ProfileTemplate: FC<IProfileTemplate> = ({
         name: "NFTs",
         title: <>NFTs</>,
         path: `${ProfileConstants.base}/${ProfileConstants.nfts}`,
-      },
-      {
-        name: "Staking",
-        title: <>Staking</>,
-        path: `${ProfileConstants.base}/${ProfileConstants.staking}`,
       },
       {
         name: "Activity",
@@ -291,28 +281,6 @@ const ProfileTemplate: FC<IProfileTemplate> = ({
     send("SHOW")
   }
 
-  const onBtcSwapClick = () => {
-    send({ type: "ASSIGN_VAULTS", data: false })
-    send({ type: "ASSIGN_SOURCE_WALLET", data: "" })
-    send({ type: "CHANGE_DIRECTION", data: ModalType.SWAP })
-    send({ type: "ASSIGN_SELECTED_TARGET_FT", data: CKBTC_CANISTER_ID })
-    send("SHOW")
-  }
-
-  const onConvertClick = () => {
-    send({ type: "ASSIGN_VAULTS", data: false })
-    send({ type: "ASSIGN_SOURCE_WALLET", data: "" })
-    send({ type: "CHANGE_DIRECTION", data: ModalType.CONVERT })
-    send("SHOW")
-  }
-
-  const onStakeClick = () => {
-    send({ type: "ASSIGN_VAULTS", data: false })
-    send({ type: "ASSIGN_SOURCE_WALLET", data: "" })
-    send({ type: "CHANGE_DIRECTION", data: ModalType.STAKE })
-    send("SHOW")
-  }
-
   const refreshPortfolio = useCallback(async () => {
     if (isRefreshing) return
     setIsRefreshing(true)
@@ -446,8 +414,6 @@ const ProfileTemplate: FC<IProfileTemplate> = ({
                 onSendClick={onSendClick}
                 onReceiveClick={onReceiveClick}
                 onSwapClick={onSwapClick}
-                onConvertClick={onConvertClick}
-                onStakeClick={onStakeClick}
                 refreshPortfolio={refreshPortfolio}
                 isRefreshing={isRefreshing}
                 address={
@@ -455,10 +421,6 @@ const ProfileTemplate: FC<IProfileTemplate> = ({
                     ? (viewOnlyAddress ?? "")
                     : authState.getUserIdData().publicKey
                 }
-              />
-              <BtcBanner
-                onBtcSwapClick={onBtcSwapClick}
-                onConvertClick={onConvertClick}
               />
               <TabsSwitcher
                 className="my-[30px]"
