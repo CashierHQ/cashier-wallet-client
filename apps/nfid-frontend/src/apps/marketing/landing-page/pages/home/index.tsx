@@ -29,7 +29,7 @@ const HomeContent = ({
         <div className="relative z-10 pt-[30px] md:pt-[60px] lg:pt-[90px] text-center flex flex-col items-center">
           <div className="text-[30px] md:text-[34px] lg:text-[44px] xl:text-[50px] font-bold lg:max-w-[1012px]">
             <h1 className="tracking-normal leading-120 gradient-text">
-              Share crypto as easily as texting.
+              Share crypto as easily as texting
             </h1>
           </div>
           <h2

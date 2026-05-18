@@ -46,7 +46,7 @@ export const WalletConnectTemplate: React.FC<WalletConnectTemplateProps> = ({
         <p className="gradient-text text-[34px] lg:text-[2.9rem] xl:text-[3.2rem] font-bold leading-[120%]">
           {isApproveRequestInProgress
             ? "Transaction request"
-            : "Share crypto as easily as texting."}
+            : "Share crypto as easily as texting"}
         </p>
         <p className="font-inter text-white text-[20px] lg:text-[1.4rem] mt-[2rem] leading-[140%] max-w-[470px]">
           {isApproveRequestInProgress
