@@ -20,7 +20,6 @@ import { Principal } from "@dfinity/principal"
 
 import { ArrowButton, Loader, TabsSwitcher, Tooltip } from "@nfid-frontend/ui"
 import { authState } from "@nfid/integration"
-import { BTC_NATIVE_ID, ETH_NATIVE_ID } from "@nfid/integration/token/constants"
 import { useSWR, useSWRWithTimestamp, mutate } from "@nfid/swr"
 
 import { NFIDTheme } from "frontend/App"
@@ -186,32 +185,13 @@ const ProfileTemplate: FC<IProfileTemplate> = ({
 
   const { initedTokens } = useTokensInit(tokens)
 
-  const btc = useMemo(() => {
-    return initedTokens?.find(
-      (token) => token.getTokenAddress() === BTC_NATIVE_ID,
-    )
-  }, [initedTokens])
-
-  const eth = useMemo(() => {
-    return initedTokens?.find(
-      (token) => token.getTokenAddress() === ETH_NATIVE_ID,
-    )
-  }, [initedTokens])
-
   const { data: nfts } = useSWR("nftList", () => fetchNFTs(), {
     revalidateOnFocus: false,
   })
 
   const isReady = useMemo(() => {
-    return (
-      nfts &&
-      Array.isArray(nfts?.items) &&
-      initedTokens &&
-      !!isWallet &&
-      eth &&
-      btc
-    )
-  }, [nfts, initedTokens, isWallet, btc, eth])
+    return nfts && Array.isArray(nfts?.items) && initedTokens && !!isWallet
+  }, [nfts, initedTokens, isWallet])
 
   const isViewOnly = isViewOnlyMode && viewOnlyAddress && viewOnlyAddressType
 

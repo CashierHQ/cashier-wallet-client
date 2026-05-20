@@ -103,7 +103,7 @@ export const Tokens: FC<TokensProps> = ({
   const isDarkTheme = useDarkTheme()
   const { isViewOnlyMode } = useContext(ProfileContext)
   const [filter, setFilter] = useState<string[]>([])
-  const isLoading = isTokensLoading || initedTokens.length === 0
+  const isLoading = isTokensLoading
 
   const handleSorting = () => {
     const nextSorting = {

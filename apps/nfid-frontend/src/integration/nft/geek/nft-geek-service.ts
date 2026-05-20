@@ -31,10 +31,16 @@ export class NftGeekService {
     const url = ic.isLocal
       ? `/nft_geek_api${str}`
       : `https://api.nftgeek.app/api${str}`
-    return await fetch(url, {
+    const response = await fetch(url, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json())
+    })
+
+    if (!response.ok) {
+      throw new Error(`NFTGeek API error: ${response.status}`)
+    }
+
+    return await response.json()
   }
 
   private mapDataToObjects(data: DataStructure): MappedToken[] {

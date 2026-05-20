@@ -18,7 +18,12 @@ import type { FT } from "../ft/ft"
 
 export class NftService {
   async getICPNFTs(userPrincipal: Principal): Promise<NFT[]> {
-    const data = await nftGeekService.getNftGeekData(userPrincipal)
+    const data = await nftGeekService
+      .getNftGeekData(userPrincipal)
+      .catch((e) => {
+        console.error("NFTGeek getNftGeekData failed:", e)
+        return []
+      })
     const nfts = data
       .map(nftMapper.toNFT)
       .filter((nft): nft is NFT => nft !== null)
